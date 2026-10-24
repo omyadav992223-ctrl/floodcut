@@ -1,0 +1,60 @@
+{
+  "metadata": {
+    "name": "FloodCut SIMULATED drainage network (Mumbai-style, synthetic)",
+    "is_simulated": true,
+    "source": "Hand-designed by the FloodCut team for development. No BMC/MCGM data was used.",
+    "description": "14 junctions, 14 drains, 6 catchments, 2 outfalls. Includes a parallel drain pair and a cross-link so the topology is not a pure tree.",
+    "disclaimer": "SIMULATED. Capacities, areas, runoff coefficients, repair costs and conditions are invented. Coordinates are illustrative positions inside Greater Mumbai, not surveyed locations. Do not use for real decisions.",
+    "schema_version": 1
+  },
+  "junctions": [
+    {"id": "J01", "name": "SIM inlet 1", "lat": 19.020, "lon": 72.838},
+    {"id": "J02", "name": "SIM inlet 2", "lat": 19.016, "lon": 72.846},
+    {"id": "J03", "name": "SIM inlet 3", "lat": 19.004, "lon": 72.838},
+    {"id": "J04", "name": "SIM inlet 4", "lat": 19.000, "lon": 72.846},
+    {"id": "J05", "name": "SIM confluence A", "lat": 19.014, "lon": 72.841},
+    {"id": "J06", "name": "SIM confluence B (diversion point)", "lat": 19.002, "lon": 72.841},
+    {"id": "J07", "name": "SIM trunk head", "lat": 19.006, "lon": 72.834},
+    {"id": "J08", "name": "SIM trunk end", "lat": 19.007, "lon": 72.826},
+    {"id": "J09", "name": "SIM inlet 5", "lat": 18.992, "lon": 72.852},
+    {"id": "J10", "name": "SIM eastern confluence", "lat": 18.996, "lon": 72.851},
+    {"id": "J11", "name": "SIM eastern trunk", "lat": 18.990, "lon": 72.856},
+    {"id": "J12", "name": "SIM inlet 6", "lat": 18.987, "lon": 72.848},
+    {"id": "OUT1", "name": "SIM sea outfall", "lat": 19.008, "lon": 72.817},
+    {"id": "OUT2", "name": "SIM river-mouth outfall", "lat": 18.984, "lon": 72.862}
+  ],
+  "drains": [
+    {"id": "D01", "from_junction": "J01", "to_junction": "J05", "design_capacity_m3s": 2.0, "capacity_factor": 1.0, "repair_cost": 12, "kind": "closed_drain"},
+    {"id": "D02", "from_junction": "J02", "to_junction": "J05", "design_capacity_m3s": 1.5, "capacity_factor": 1.0, "repair_cost": 9, "kind": "closed_drain"},
+    {"id": "D03", "from_junction": "J03", "to_junction": "J06", "design_capacity_m3s": 2.5, "capacity_factor": 1.0, "repair_cost": 15, "kind": "closed_drain"},
+    {"id": "D04", "from_junction": "J04", "to_junction": "J06", "design_capacity_m3s": 1.8, "capacity_factor": 0.8, "repair_cost": 11, "kind": "closed_drain"},
+    {"id": "D05", "from_junction": "J05", "to_junction": "J07", "design_capacity_m3s": 3.0, "capacity_factor": 0.6, "repair_cost": 20, "kind": "closed_drain"},
+    {"id": "D06", "from_junction": "J06", "to_junction": "J07", "design_capacity_m3s": 3.5, "capacity_factor": 1.0, "repair_cost": 22, "kind": "closed_drain"},
+    {"id": "D07", "from_junction": "J06", "to_junction": "J10", "design_capacity_m3s": 1.2, "capacity_factor": 1.0, "repair_cost": 8, "kind": "diversion"},
+    {"id": "D08a", "from_junction": "J07", "to_junction": "J08", "design_capacity_m3s": 3.0, "capacity_factor": 1.0, "repair_cost": 30, "kind": "box_drain"},
+    {"id": "D08b", "from_junction": "J07", "to_junction": "J08", "design_capacity_m3s": 3.0, "capacity_factor": 0.0, "repair_cost": 30, "kind": "box_drain"},
+    {"id": "D09", "from_junction": "J08", "to_junction": "OUT1", "design_capacity_m3s": 5.0, "capacity_factor": 1.0, "repair_cost": 40, "kind": "open_nallah"},
+    {"id": "D10", "from_junction": "J09", "to_junction": "J10", "design_capacity_m3s": 2.0, "capacity_factor": 1.0, "repair_cost": 14, "kind": "closed_drain"},
+    {"id": "D11", "from_junction": "J10", "to_junction": "J11", "design_capacity_m3s": 3.2, "capacity_factor": 0.5, "repair_cost": 25, "kind": "closed_drain"},
+    {"id": "D12", "from_junction": "J11", "to_junction": "OUT2", "design_capacity_m3s": 3.5, "capacity_factor": 1.0, "repair_cost": 35, "kind": "open_nallah"},
+    {"id": "D13", "from_junction": "J12", "to_junction": "J11", "design_capacity_m3s": 1.5, "capacity_factor": 1.0, "repair_cost": 10, "kind": "closed_drain"}
+  ],
+  "catchments": [
+    {"id": "C1", "name": "SIM catchment 1", "junction_id": "J01", "area_ha": 12, "runoff_coefficient": 0.80},
+    {"id": "C2", "name": "SIM catchment 2", "junction_id": "J02", "area_ha": 9,  "runoff_coefficient": 0.70},
+    {"id": "C3", "name": "SIM catchment 3", "junction_id": "J03", "area_ha": 16, "runoff_coefficient": 0.85},
+    {"id": "C4", "name": "SIM catchment 4", "junction_id": "J04", "area_ha": 10, "runoff_coefficient": 0.75},
+    {"id": "C5", "name": "SIM catchment 5", "junction_id": "J09", "area_ha": 14, "runoff_coefficient": 0.80},
+    {"id": "C6", "name": "SIM catchment 6", "junction_id": "J12", "area_ha": 8,  "runoff_coefficient": 0.70}
+  ],
+  "outfalls": [
+    {"junction_id": "OUT1", "name": "SIM sea outfall", "base_capacity_m3s": 5.0, "tidal": true},
+    {"junction_id": "OUT2", "name": "SIM river-mouth outfall", "base_capacity_m3s": 3.5, "tidal": true}
+  ],
+  "critical_assets": [
+    {"id": "A1", "name": "SIM Hospital A", "kind": "hospital", "catchment_id": "C3"},
+    {"id": "A2", "name": "SIM Hospital B", "kind": "hospital", "catchment_id": "C5"},
+    {"id": "A3", "name": "SIM Underpass", "kind": "underpass", "catchment_id": "C1"},
+    {"id": "A4", "name": "SIM Rail station", "kind": "rail_station", "catchment_id": "C4"}
+  ]
+}

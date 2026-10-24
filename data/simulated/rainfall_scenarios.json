@@ -1,0 +1,12 @@
+{
+  "metadata": {
+    "is_simulated": true,
+    "note": "Scenario intensities and tide factors are ASSUMPTIONS for development. They are not observations or forecasts."
+  },
+  "scenarios": [
+    {"id": "light",   "name": "Light rain, low tide",        "intensity_mm_h": 25,  "tide_factor": 1.0, "description": "SIMULATED assumption"},
+    {"id": "design",  "name": "Design storm, low tide",      "intensity_mm_h": 50,  "tide_factor": 1.0, "description": "SIMULATED assumption"},
+    {"id": "heavy",   "name": "Heavy rain, rising tide",     "intensity_mm_h": 75,  "tide_factor": 0.7, "description": "SIMULATED assumption"},
+    {"id": "extreme", "name": "Extreme rain, high tide",     "intensity_mm_h": 100, "tide_factor": 0.5, "description": "SIMULATED assumption"}
+  ]
+}

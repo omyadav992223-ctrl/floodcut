@@ -1,0 +1,13 @@
+# Roadmap
+
+Each phase must meet its exit criteria before the next begins.
+
+| Phase | Scope | Exit criteria | Status |
+|---|---|---|---|
+| **1. Foundation** | Models, JSON I/O, validation, physical graph, flow-network encoding, demand, CLI, simulated data, tests | Fresh install runs; tests pass; CLI works on simulated data | **Done** |
+| **2. Max-flow engine** | Own Edmonds–Karp; cross-check against NetworkX on random graphs; min cut mapped to drains; define an explicit overflow-location rule; report non-unique min cuts | max flow = min cut verified by brute-force cut enumeration on small graphs; hand-computed examples pass | **Done** — see `src/floodcut/maxflow.py`, `docs/MAXFLOW.md`, `tests/test_maxflow.py` |
+| **3. Failure simulation** | Enumerate k-failure subsets; worst-case K failures; probabilistic expected overflow (exact for small m) | Counts match C(m,k); superadditive/subadditive examples reproduced | **Done** — see `src/floodcut/failure.py`, `tests/test_failure.py` |
+| **4. Repair optimization** | Exact subset search for small m; marginal-gain greedy; baselines (severity, random, cheapest, ratio); optimality-gap report | Greedy-failure example reproduced; exact optimum beats or equals all baselines | **Done** — see `src/floodcut/repair.py`, `tests/test_repair.py` |
+| **5. Real data integration** | Provenance system (REAL/DERIVED/ASSUMED/SYNTHETIC labels); IMD/OpenCity monthly rainfall CSV loader; geospatial point layers (IMD grid, waterlogging hotspots); unit conversion pipeline; offline tests | Real data loads; provenance visible; Phases 3–4 unbroken; offline tests pass | **Done** — see `src/floodcut/provenance.py`, `rainfall_loader.py`, `geo_loader.py`, `docs/PHASE5_DATA_INTEGRATION.md`, `tests/test_phase5_data_integration.py` |
+| **6. Dashboard** | Streamlit + Folium map; visually distinguish real, derived, and synthetic layers; interactive failure simulation and repair optimization; offline fallbacks | Interactive web app runs; all algorithms connected; real & synthetic visually distinct; tests pass | **Done** — see `src/floodcut/app.py`, `src/floodcut/ui/`, `docs/PHASE6_FRONTEND.md`, `tests/test_phase6_frontend.py` |
+| **7. Testing and final audit** | Full test suite execution (275 tests); mathematical verification of flow conservation, capacity bounds, and Max-Flow Min-Cut theorem; provenance audit; Discrete Math syllabus mapping; student reproduction instructions | 275/275 tests pass offline; mathematical invariants verified; syllabus alignment documented; reproducibility verified | **Done** — see `tests/test_phase7_audit.py`, `docs/DISCRETE_MATH_ALIGNMENT.md`, `README.md` |
